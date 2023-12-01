@@ -31,9 +31,9 @@ Consider your entire calibration document. What is the sum of all of the calibra
 */
 
 #include "../../include/_init/part1.hpp"
-
+// digits regex considering possible overlapping matches with lookahead
+std::regex re("(?=(one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9)).");
 // Map of digit strings to their integer values
-std::regex re("(?=(one|two|three|four|five|six|seven|eight|nine|\\d))");
 std::unordered_map<std::string, int> map = {
     {"1", 1},
     {"2", 2},
@@ -64,7 +64,7 @@ int calibrate(const std::string &line)
 
     while (std::regex_search(_tmp, match, re))
     {
-        digits.push_back(map[match.str(0)]);
+        digits.push_back(map[match.str(1)]);
         _tmp = match.suffix().str();
     }
 
@@ -86,8 +86,8 @@ int part1(std::string input_file_path)
     }
 
     int sum = 0;
-    for (const auto &line : document){
-        // std::cout << line << " -> " << calibrate(line) << std::endl;
-        sum += calibrate(line);}
+    for (const auto &line : document)
+        sum += calibrate(line);
+
     return sum;
 }

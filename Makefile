@@ -41,7 +41,7 @@ help:
 
 prepare:
 	@echo "Detected OS: $(detected_OS)\n"
-	-@$(RM) build/
+	-@$(RM) build
 	@echo "Removed build directory"
 
 dirs: clean
