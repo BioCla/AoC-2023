@@ -1,4 +1,5 @@
 #include "../../include/_init/part1.hpp"
+#include "../../include/_init/part2.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +12,7 @@ int main(int argc, char *argv[])
     std::string input_file_path = argv[1];
 
     std::cout << "Part 1: " << part1(input_file_path) << std::endl;
-    // std::cout << "Part 2: " << part2(input_file_path) << std::endl;
+    std::cout << "Part 2: " << part2(input_file_path) << std::endl;
 
     return 0;
 }

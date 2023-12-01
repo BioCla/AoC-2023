@@ -1,5 +1,5 @@
 /*
---- Day 1: Trebuchet?! ---
+--- Day 1: Trebuchet?! Part 1 ---
 Something is wrong with global snow production, and you've been selected to take a look.
 The Elves have even given you a map; on it, they've used stars to mark the top fifty locations that are likely to be having problems.
 
@@ -32,39 +32,18 @@ Consider your entire calibration document. What is the sum of all of the calibra
 
 #include "../../include/_init/part1.hpp"
 // digits regex considering possible overlapping matches with lookahead
-std::regex re("(?=(one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9)).");
-// Map of digit strings to their integer values
-std::unordered_map<std::string, int> map = {
-    {"1", 1},
-    {"2", 2},
-    {"3", 3},
-    {"4", 4},
-    {"5", 5},
-    {"6", 6},
-    {"7", 7},
-    {"8", 8},
-    {"9", 9},
-    {"one", 1},
-    {"two", 2},
-    {"three", 3},
-    {"four", 4},
-    {"five", 5},
-    {"six", 6},
-    {"seven", 7},
-    {"eight", 8},
-    {"nine", 9},
-};
+std::regex re1("\\d");
 
 // Function to calculate calibration value for a single line
-int calibrate(const std::string &line)
+int calibrate1(const std::string &line)
 {
     std::smatch match;
     std::string _tmp = line;
     std::vector<int> digits;
 
-    while (std::regex_search(_tmp, match, re))
+    while (std::regex_search(_tmp, match, re1))
     {
-        digits.push_back(map[match.str(1)]);
+        digits.push_back(std::stoi(match.str(0)));
         _tmp = match.suffix().str();
     }
 
@@ -87,7 +66,7 @@ int part1(std::string input_file_path)
 
     int sum = 0;
     for (const auto &line : document)
-        sum += calibrate(line);
+        sum += calibrate1(line);
 
     return sum;
 }
