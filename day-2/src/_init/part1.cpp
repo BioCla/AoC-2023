@@ -43,10 +43,6 @@ What is the sum of the IDs of those games?
 #include "../../include/_init/part1.hpp"
 #include "../../include/util/string_util.hpp"
 
-#define MAX_RED 12
-#define MAX_GREEN 13
-#define MAX_BLUE 14
-
 int count_cubes1(std::string game)
 {
     if (game.empty())
@@ -71,7 +67,7 @@ int count_cubes1(std::string game)
         }
     }
 
-    if (red <= MAX_RED && green <= MAX_GREEN && blue <= MAX_BLUE)
+    if (red <= 12 && green <= 13 && blue <= 14)
         return std::stoi(split(game_id, " ")[1]);
     return 0;
 }
