@@ -50,13 +50,12 @@ int count_cubes2(std::string game)
         std::vector<std::string> set_vec = split(set, ", ");
         for (const auto &cube : set_vec)
         {
-            int count = std::stoi(cube.substr(0, cube.find(" ")));
             if (cube.find("red") != std::string::npos)
-                red = count >= red ? count : red;
+                red = std::max(red, std::stoi(cube.substr(0, cube.find(" "))));
             if (cube.find("green") != std::string::npos)
-                green = count >= green ? count : green;
+                green = std::max(green, std::stoi(cube.substr(0, cube.find(" "))));
             if (cube.find("blue") != std::string::npos)
-                blue = count >= blue ? count : blue;
+                blue = std::max(blue, std::stoi(cube.substr(0, cube.find(" "))));
         }
     }
 
