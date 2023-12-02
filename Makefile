@@ -44,13 +44,13 @@ prepare:
 	-@$(RM) build
 	@echo "Removed build directory"
 
-dirs: clean
-	@$(MD) $(call FixPath,$(patsubst %, build/%, $(DIRS)))
-	@echo "Created directories: \n$(DIRS)"
-
 clean: prepare
 	-@$(UN) main$(ext)
 	@echo "Removed main$(ext)"
+
+dirs: clean
+	@$(MD) $(call FixPath,$(patsubst %, build/%, $(DIRS)))
+	@echo "Created directories: \n$(DIRS)"
 
 build/%.o: $(DAY_DIR)/src/%.cpp
 	@echo "\nCompiling: $< : $@..."
