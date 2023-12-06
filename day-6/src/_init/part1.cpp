@@ -76,7 +76,7 @@ What do you get if you multiply these numbers together?
 */
 
 #include "../../include/_init/part1.hpp"
-#include "../../include/util/string_util.hpp"
+#include "../../include/util/util.hpp"
 
 int part1(std::string input_file_path)
 {

@@ -1,4 +1,4 @@
-#include "../../include/util/string_util.hpp"
+#include "../../include/util/util.hpp"
 
 std::vector<std::string> split(std::string str, std::string delimiter)
 {
@@ -12,4 +12,12 @@ std::vector<std::string> split(std::string str, std::string delimiter)
     }
     sets.push_back(str);
     return sets;
+}
+
+int quadratic_formula(int64_t a, int64_t b, int64_t c)
+{
+    int64_t sqrt_discriminant = sqrt((b * b) - (4 * a * c)) + 1;
+    int64_t i = (-b + sqrt_discriminant) / (2 * a);
+    int64_t j = (-b - sqrt_discriminant) / (2 * a);
+    return j - i;
 }

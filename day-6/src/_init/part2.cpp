@@ -1,7 +1,7 @@
 /*
 --- Day 6: Wait For It Part 2 ---
 
-As the race is about to start, you realize the piece of paper with race times and record distances you got earlier actually just has very bad kerning. 
+As the race is about to start, you realize the piece of paper with race times and record distances you got earlier actually just has very bad kerning.
 There's really only one race - ignore the spaces between the numbers on each line.
 
 So, the example from before:
@@ -14,15 +14,15 @@ Distance:  9  40  200
 Time:      71530
 Distance:  940200
 
-Now, you have to figure out how many ways there are to win this single race. 
-In this example, the race lasts for 71530 milliseconds and the record distance you need to beat is 940200 millimeters. 
+Now, you have to figure out how many ways there are to win this single race.
+In this example, the race lasts for 71530 milliseconds and the record distance you need to beat is 940200 millimeters.
 You could hold the button anywhere from 14 to 71516 milliseconds and beat the record, a total of 71503 ways!
 
 How many ways can you beat the record in this one much longer race?
 */
 
 #include "../../include/_init/part2.hpp"
-#include "../../include/util/string_util.hpp"
+#include "../../include/util/util.hpp"
 
 int part2(std::string input_file_path)
 {
@@ -52,6 +52,10 @@ int part2(std::string input_file_path)
     int64_t time_int = std::stoll(time);
     int64_t distance_int = std::stoll(distance);
 
+    // Using the quadratic formula to solve for the number of ways to win
+    std::cout << std::endl
+              << "    Quadratic Solution: " << quadratic_formula(-1, time_int, -distance_int) << std::endl;
+
     int64_t ways_to_win = 0;
 
     for (int64_t i = 0; i < time_int; i++)
@@ -64,6 +68,6 @@ int part2(std::string input_file_path)
             ways_to_win++;
     }
 
+    std::cout << "    Brute Force Solution: ";
     return ways_to_win;
-
 }
