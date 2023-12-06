@@ -87,134 +87,123 @@ int part2(std::string input_file_path)
 
         for (std::vector<int64_t> seed_to_soil_entry : seed_to_soil_map)
         {
-            int64_t *seed_to_soil_source = new int64_t[2]{
+            std::vector<int64_t> seed_to_soil_source = {
                 seed_to_soil_entry[1],
                 seed_to_soil_entry[1] + seed_to_soil_entry[2]};
 
-            int64_t *seed_to_soil_source_overlap = new int64_t[2]{
+            std::vector<int64_t> seed_to_soil_source_overlap = {
                 std::max(seed_range_start, seed_to_soil_source[0]),
                 std::min(seed_range_end, seed_to_soil_source[1])};
 
             if (seed_to_soil_source_overlap[0] > seed_to_soil_source_overlap[1])
                 continue;
 
-            int64_t *destination_mapped_to_overlap = new int64_t[2]{
+            std::vector<int64_t> destination_mapped_to_overlap = {
                 seed_to_soil_source_overlap[0] - seed_to_soil_source[0] + seed_to_soil_entry[0],
                 seed_to_soil_source_overlap[1] - seed_to_soil_source[0] + seed_to_soil_entry[0]};
 
             for (std::vector<int64_t> soil_to_fertilizer_entry : soil_to_fertilizer_map)
             {
-                int64_t *soil_to_fertilizer_source = new int64_t[2]{
+                std::vector<int64_t> soil_to_fertilizer_source = {
                     soil_to_fertilizer_entry[1],
                     soil_to_fertilizer_entry[1] + soil_to_fertilizer_entry[2]};
 
-                int64_t *soil_to_fertilizer_source_overlap = new int64_t[2]{
+                std::vector<int64_t> soil_to_fertilizer_source_overlap = {
                     std::max(destination_mapped_to_overlap[0], soil_to_fertilizer_source[0]),
                     std::min(destination_mapped_to_overlap[1], soil_to_fertilizer_source[1])};
 
                 if (soil_to_fertilizer_source_overlap[0] > soil_to_fertilizer_source_overlap[1])
                     continue;
 
-                int64_t *destination_mapped_to_overlap = new int64_t[2]{
+                std::vector<int64_t> destination_mapped_to_overlap = {
                     soil_to_fertilizer_source_overlap[0] - soil_to_fertilizer_source[0] + soil_to_fertilizer_entry[0],
                     soil_to_fertilizer_source_overlap[1] - soil_to_fertilizer_source[0] + soil_to_fertilizer_entry[0]};
 
                 for (std::vector<int64_t> fertilizer_to_water_entry : fertilizer_to_water_map)
                 {
-                    int64_t *fertilizer_to_water_source = new int64_t[2]{
+                    std::vector<int64_t> fertilizer_to_water_source = {
                         fertilizer_to_water_entry[1],
                         fertilizer_to_water_entry[1] + fertilizer_to_water_entry[2]};
 
-                    int64_t *fertilizer_to_water_source_overlap = new int64_t[2]{
+                    std::vector<int64_t> fertilizer_to_water_source_overlap = {
                         std::max(destination_mapped_to_overlap[0], fertilizer_to_water_source[0]),
                         std::min(destination_mapped_to_overlap[1], fertilizer_to_water_source[1])};
 
                     if (fertilizer_to_water_source_overlap[0] > fertilizer_to_water_source_overlap[1])
                         continue;
 
-                    int64_t *destination_mapped_to_overlap = new int64_t[2]{
+                    std::vector<int64_t> destination_mapped_to_overlap = {
                         fertilizer_to_water_source_overlap[0] - fertilizer_to_water_source[0] + fertilizer_to_water_entry[0],
                         fertilizer_to_water_source_overlap[1] - fertilizer_to_water_source[0] + fertilizer_to_water_entry[0]};
 
                     for (std::vector<int64_t> water_to_light_entry : water_to_light_map)
                     {
-                        int64_t *water_to_light_source = new int64_t[2]{
+                        std::vector<int64_t> water_to_light_source = {
                             water_to_light_entry[1],
                             water_to_light_entry[1] + water_to_light_entry[2]};
-                        int64_t *water_to_light_source_overlap = new int64_t[2]{
+                        std::vector<int64_t> water_to_light_source_overlap = {
                             std::max(destination_mapped_to_overlap[0], water_to_light_source[0]),
                             std::min(destination_mapped_to_overlap[1], water_to_light_source[1])};
 
                         if (water_to_light_source_overlap[0] > water_to_light_source_overlap[1])
                             continue;
 
-                        int64_t *destination_mapped_to_overlap = new int64_t[2]{
+                        std::vector<int64_t> destination_mapped_to_overlap = {
                             water_to_light_source_overlap[0] - water_to_light_source[0] + water_to_light_entry[0],
                             water_to_light_source_overlap[1] - water_to_light_source[0] + water_to_light_entry[0]};
                         for (std::vector<int64_t> light_to_temperature_entry : light_to_temperature_map)
                         {
-                            int64_t *light_to_temperature_source = new int64_t[2]{
+                            std::vector<int64_t> light_to_temperature_source = {
                                 light_to_temperature_entry[1],
                                 light_to_temperature_entry[1] + light_to_temperature_entry[2]};
-                            int64_t *light_to_temperature_source_overlap = new int64_t[2]{
+                            std::vector<int64_t> light_to_temperature_source_overlap = {
                                 std::max(destination_mapped_to_overlap[0], light_to_temperature_source[0]),
                                 std::min(destination_mapped_to_overlap[1], light_to_temperature_source[1])};
 
                             if (light_to_temperature_source_overlap[0] > light_to_temperature_source_overlap[1])
                                 continue;
 
-                            int64_t *destination_mapped_to_overlap = new int64_t[2]{
+                            std::vector<int64_t> destination_mapped_to_overlap = {
                                 light_to_temperature_source_overlap[0] - light_to_temperature_source[0] + light_to_temperature_entry[0],
                                 light_to_temperature_source_overlap[1] - light_to_temperature_source[0] + light_to_temperature_entry[0]};
                             for (std::vector<int64_t> temperature_to_humidity_entry : temperature_to_humidity_map)
                             {
-                                int64_t *temperature_to_humidity_source = new int64_t[2]{
+                                std::vector<int64_t> temperature_to_humidity_source = {
                                     temperature_to_humidity_entry[1],
                                     temperature_to_humidity_entry[1] + temperature_to_humidity_entry[2]};
-                                int64_t *temperature_to_humidity_source_overlap = new int64_t[2]{
+                                std::vector<int64_t> temperature_to_humidity_source_overlap = {
                                     std::max(destination_mapped_to_overlap[0], temperature_to_humidity_source[0]),
                                     std::min(destination_mapped_to_overlap[1], temperature_to_humidity_source[1])};
 
                                 if (temperature_to_humidity_source_overlap[0] > temperature_to_humidity_source_overlap[1])
                                     continue;
 
-                                int64_t *destination_mapped_to_overlap = new int64_t[2]{
+                                std::vector<int64_t> destination_mapped_to_overlap = {
                                     temperature_to_humidity_source_overlap[0] - temperature_to_humidity_source[0] + temperature_to_humidity_entry[0],
                                     temperature_to_humidity_source_overlap[1] - temperature_to_humidity_source[0] + temperature_to_humidity_entry[0]};
                                 for (std::vector<int64_t> humidity_to_location_entry : humidity_to_location_map)
                                 {
-                                    int64_t *humidity_to_location_source = new int64_t[2]{
+                                    std::vector<int64_t> humidity_to_location_source = {
                                         humidity_to_location_entry[1],
                                         humidity_to_location_entry[1] + humidity_to_location_entry[2]};
-                                    int64_t *humidity_to_location_source_overlap = new int64_t[2]{
+                                    std::vector<int64_t> humidity_to_location_source_overlap = {
                                         std::max(destination_mapped_to_overlap[0], humidity_to_location_source[0]),
                                         std::min(destination_mapped_to_overlap[1], humidity_to_location_source[1])};
 
                                     if (humidity_to_location_source_overlap[0] > humidity_to_location_source_overlap[1])
                                         continue;
 
-                                    int64_t *destination_mapped_to_overlap = new int64_t[2]{
+                                    std::vector<int64_t> destination_mapped_to_overlap = {
                                         humidity_to_location_source_overlap[0] - humidity_to_location_source[0] + humidity_to_location_entry[0],
                                         humidity_to_location_source_overlap[1] - humidity_to_location_source[0] + humidity_to_location_entry[0]};
-                                    // std::cout << destination_mapped_to_overlap[0] << std::endl;
                                     if (destination_mapped_to_overlap[0] < lowest_location)
                                         lowest_location = destination_mapped_to_overlap[0];
-
-                                    delete[] humidity_to_location_source;
-                                    delete[] humidity_to_location_source_overlap;
-                                    delete[] destination_mapped_to_overlap;
                                 }
-                                delete[] temperature_to_humidity_source;
                             }
-                            delete[] light_to_temperature_source;
                         }
-                        delete[] water_to_light_source;
                     }
-                    delete[] fertilizer_to_water_source;
                 }
-                delete[] soil_to_fertilizer_source;
             }
-            delete[] seed_to_soil_source;
         }
     }
     return lowest_location;
