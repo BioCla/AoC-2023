@@ -52,7 +52,6 @@ int part2(std::string input_file_path)
     int64_t time_int = std::stoll(time);
     int64_t distance_int = std::stoll(distance);
 
-    // Using the quadratic formula to solve for the number of ways to win
     std::cout << std::endl
               << "    Quadratic Solution: " << quadratic_formula(-1, time_int, -distance_int) << std::endl;
 
