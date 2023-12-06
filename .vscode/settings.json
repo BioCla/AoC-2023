@@ -67,6 +67,8 @@
 		"ratio": "cpp",
 		"string_view": "cpp",
 		"variant": "cpp",
-		"__availability": "cpp"
+		"__availability": "cpp",
+		"__tree": "cpp",
+		"set": "cpp"
 	}
 }
