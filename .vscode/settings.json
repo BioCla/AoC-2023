@@ -73,6 +73,7 @@
 		"list": "cpp",
 		"unordered_set": "cpp",
 		"queue": "cpp",
-		"version": "cpp"
+		"version": "cpp",
+		"__memory": "cpp"
 	}
 }
